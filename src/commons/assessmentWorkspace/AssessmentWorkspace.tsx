@@ -95,6 +95,7 @@ const AssessmentWorkspace: React.FC<AssessmentWorkspaceProps> = props => {
   const [showResetTemplateOverlay, setShowResetTemplateOverlay] = useState(false);
   const [sessionId, setSessionId] = useState('');
   const { isMobileBreakpoint } = useResponsive();
+  const isVscode = useTypedSelector(state => state.vscode.isVscode);
 
   const assessment = useTypedSelector(state => state.session.assessments[props.assessmentId]);
   const assessmentOverviews = useTypedSelector(state => state.session.assessmentOverviews);
@@ -946,7 +947,7 @@ const AssessmentWorkspace: React.FC<AssessmentWorkspaceProps> = props => {
     <div className={classNames('WorkspaceParent', Classes.DARK)}>
       {overlay}
       {resetTemplateOverlay}
-      {!isMobileBreakpoint ? (
+      {isVscode || !isMobileBreakpoint ? (
         <Workspace {...workspaceProps} />
       ) : (
         <MobileWorkspace {...mobileWorkspaceProps} />
