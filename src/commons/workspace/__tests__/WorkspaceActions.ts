@@ -259,7 +259,6 @@ test('updateEditorValue generates correct action object', () => {
       workspaceLocation: assessmentWorkspace,
       editorTabIndex,
       newEditorValue,
-      isFromVscode: false
     }
   });
 });
